@@ -26,14 +26,14 @@ describe('hobbits model', () => {
           await db('hobbits').truncate();
         });
         it('should fail to remove if there is nothing to remove', async () => {
-          await Hobbits.insert({ name: 'test1'});
-          const result = await Hibbits.remove();
+          await Hobbits.insert({ name: 'test2'});
+          const result = await Hibbits.remove(2);
           expect(result).toBe(0);
         })
         it('should return id if successfully removed', async () => {
-          await Hobbits.insert({ name: 'test1' });
-          const result = await Hobbits.remove(1);
-          expect(result).toBe(1);
+          await Hobbits.insert({ name: 'test2' });
+          const result = await Hobbits.remove(2);
+          expect(result).toBe(2);
         })
       })  
 })  

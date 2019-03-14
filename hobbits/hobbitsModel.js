@@ -19,8 +19,15 @@ async function update(id, changes) {
   return null;
 }
 
-function remove(id) {
-  return null;
+async function remove(id) {
+  let find = await findById(id)
+  console.log(find)
+  if (find.length !== 0) {
+    await db('hobbits').delete().where('id',id)
+    return id;
+  } else {
+    return 0
+  }
 }
 
 function getAll() {
@@ -28,5 +35,5 @@ function getAll() {
 }
 
 function findById(id) {
-  return null;
+  return db('hobbits').where('id',id);
 }
